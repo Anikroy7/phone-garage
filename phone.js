@@ -1,3 +1,6 @@
+
+// load all phones from api
+
 const loadPhone = () => {
 
     const searchId = document.getElementById('input-field');
@@ -12,27 +15,30 @@ const loadPhone = () => {
 
 }
 
+// display all phone 
+
+
 const displayPhone = phones => {
     console.log(phones.length)
     const displayId = document.getElementById('display-phones');
     displayId.textContent = '';
-    const neededPhones = phones.slice(0, 30);
     if (phones.length === 0) {
 
         document.getElementById('no-result').style.display = 'block';
     }
     else {
         document.getElementById('no-result').style.display = 'none';
+        const neededPhones = phones.slice(0, 20);
         for (const phone of neededPhones) {
             const div = document.createElement('div');
             div.classList.add('col')
             div.innerHTML = `
             
                 <div class="card h-100 display-div">
-                    <img src="${phone.image}" class="card-img-top display-image" alt="...">
+                    <img src="${phone?.image}" class="card-img-top display-image" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Phone Name: ${phone.phone_name}<h5>
-                        <p class="card-text">Brand Name: ${phone.brand}</p>
+                        <h5 class="card-title">Phone Name: ${phone?.phone_name}<h5>
+                        <p class="card-text">Brand Name: ${phone?.brand}</p>
                     </div>
                     <button type="button" onclick="loadShowDetails('${phone?.slug}')" class="btn btn-secondary fst-normal border rounded">Show details</button>
                </div>
@@ -43,6 +49,8 @@ const displayPhone = phones => {
     }
 
 }
+// load phone details api 
+
 
 const loadShowDetails = (phoneId) => {
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`
@@ -52,14 +60,17 @@ const loadShowDetails = (phoneId) => {
 
 }
 
+
+//  display phone details start
+
+
 const displayPhoneDetails = phonesId => {
 
-    console.log(phonesId)
     const displayDetailsArea = document.getElementById('phone-details');
 
     if (phonesId?.releaseDate === '') {
-        displayDetailsArea.innerHTML = `
-    
+
+        displayDetailsArea.innerHTML = `  
         <img src="${phonesId?.image}" alt="">
         <h3>${phonesId?.name}</h3>
         <p>no release date found..</p>
@@ -72,9 +83,10 @@ const displayPhoneDetails = phonesId => {
         
           `
     }
+
     else {
-        displayDetailsArea.innerHTML = `
-    
+
+        displayDetailsArea.innerHTML = `  
                 <img src="${phonesId?.image}" alt="">
                 <h3>${phonesId?.name}</h3>
                 <p>${phonesId?.releaseDate}</p>
@@ -86,6 +98,7 @@ const displayPhoneDetails = phonesId => {
                 <p>Bluetooth: ${phonesId?.others?.Bluetooth} ; WLAN: ${phonesId?.others?.WLAN} ; GPS: ${phonesId?.others?.GPS} ; NFC: ${phonesId?.others?.NFC} ; Radio:  ${phonesId?.others?.Radio} ; USB:  ${phonesId?.others?.USB} ;</p>
 
                   `
+
     }
 
 }
