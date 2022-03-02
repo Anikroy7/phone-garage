@@ -34,7 +34,7 @@ const displayPhone = phones => {
                         <h5 class="card-title">Phone Name: ${phone.phone_name}<h5>
                         <p class="card-text">Brand Name: ${phone.brand}</p>
                     </div>
-                    <button type="button" onclick="loadShowDetails('${phone.slug}')" class="btn btn-secondary fst-normal border rounded">Show details</button>
+                    <button type="button" onclick="loadShowDetails('${phone?.slug}')" class="btn btn-secondary fst-normal border rounded">Show details</button>
                </div>
             
             `
@@ -45,7 +45,6 @@ const displayPhone = phones => {
 }
 
 const loadShowDetails = (phoneId) => {
-    // console.log(phoneId)
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`
     fetch(url)
         .then(res => res.json())
@@ -53,38 +52,39 @@ const loadShowDetails = (phoneId) => {
 
 }
 
-const displayPhoneDetails = PhonesId => {
+const displayPhoneDetails = phonesId => {
 
+    console.log(phonesId)
     const displayDetailsArea = document.getElementById('phone-details');
 
-    if (PhonesId.releaseDate === '') {
+    if (phonesId?.releaseDate === '') {
         displayDetailsArea.innerHTML = `
     
-                <img src="${PhonesId.image}" alt="">
-                <h3>${PhonesId.name}</h3>
-                <p>no release date found...</p>
-                <p>Storage: ${PhonesId.mainFeatures.storage}</p>
-                <p>Memory: ${PhonesId.mainFeatures.memory}</p>
-                <p>Chipset: ${PhonesId.mainFeatures.chipSet}</p>
-                <p>Display-size: ${PhonesId.mainFeatures.displaySize}</p>
-                <p>Sensors: ${PhonesId.mainFeatures.sensors[0]},${PhonesId.mainFeatures.sensors[1]},${PhonesId.mainFeatures.sensors[2]},${PhonesId.mainFeatures.sensors[3]},${PhonesId.mainFeatures.sensors[4]},${PhonesId.mainFeatures.sensors[5]}</p>
-    
-            
-                
-                  `
+        <img src="${phonesId?.image}" alt="">
+        <h3>${phonesId?.name}</h3>
+        <p>no release date found..</p>
+        <p>Storage: ${phonesId?.mainFeatures?.storage}</p>
+        <p>Memory: ${phonesId?.mainFeatures?.memory}</p>
+        <p>Chipset: ${phonesId?.mainFeatures?.chipSet}</p>
+        <p>Display-size: ${phonesId?.mainFeatures?.displaySize}</p>
+        <p>Sensors: ${phonesId?.mainFeatures?.sensors[0]},${phonesId?.mainFeatures?.sensors[1]},${phonesId?.mainFeatures?.sensors[2]},${phonesId?.mainFeatures?.sensors[3]},${phonesId?.mainFeatures?.sensors[4]},${phonesId?.mainFeatures?.sensors[5]}</p>
+        <p>Bluetooth: ${phonesId?.others?.Bluetooth} ; WLAN: ${phonesId?.others?.WLAN} ; GPS: ${phonesId?.others?.GPS} ; NFC: ${phonesId?.others?.NFC} ; Radio:  ${phonesId?.others?.Radio} ; USB:  ${phonesId?.others?.USB} ;</p>
+        
+          `
     }
     else {
         displayDetailsArea.innerHTML = `
     
-                <img src="${PhonesId.image}" alt="">
-                <h3>${PhonesId.name}</h3>
-                <p>${PhonesId.releaseDate}</p>
-                <p>Storage: ${PhonesId.mainFeatures.storage}</p>
-                <p>Memory: ${PhonesId.mainFeatures.memory}</p>
-                <p>Chipset: ${PhonesId.mainFeatures.chipSet}</p>
-                <p>Display-size: ${PhonesId.mainFeatures.displaySize}</p>
-                <p>Sensors: ${PhonesId.mainFeatures.sensors[0]},${PhonesId.mainFeatures.sensors[1]},${PhonesId.mainFeatures.sensors[2]},${PhonesId.mainFeatures.sensors[3]},${PhonesId.mainFeatures.sensors[4]},${PhonesId.mainFeatures.sensors[5]}</p>
-                               
+                <img src="${phonesId?.image}" alt="">
+                <h3>${phonesId?.name}</h3>
+                <p>${phonesId?.releaseDate}</p>
+                <p>Storage: ${phonesId?.mainFeatures?.storage}</p>
+                <p>Memory: ${phonesId?.mainFeatures?.memory}</p>
+                <p>Chipset: ${phonesId?.mainFeatures?.chipSet}</p>
+                <p>Display-size: ${phonesId?.mainFeatures?.displaySize}</p>
+                <p>Sensors: ${phonesId?.mainFeatures?.sensors[0]},${phonesId?.mainFeatures?.sensors[1]},${phonesId?.mainFeatures?.sensors[2]},${phonesId?.mainFeatures?.sensors[3]},${phonesId?.mainFeatures?.sensors[4]},${phonesId?.mainFeatures?.sensors[5]}</p>
+                <p>Bluetooth: ${phonesId?.others?.Bluetooth} ; WLAN: ${phonesId?.others?.WLAN} ; GPS: ${phonesId?.others?.GPS} ; NFC: ${phonesId?.others?.NFC} ; Radio:  ${phonesId?.others?.Radio} ; USB:  ${phonesId?.others?.USB} ;</p>
+
                   `
     }
 
