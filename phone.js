@@ -1,8 +1,13 @@
+// add spiner start
+
+const toggleSpinner = display => {
+    document.getElementById('spinner').style.display = display;
+}
 
 // load all phones from api
 
 const loadPhone = () => {
-
+    toggleSpinner('block')
     const searchId = document.getElementById('input-field');
     const serachText = searchId.value;
     document.getElementById('input-field').value = '';
@@ -46,6 +51,7 @@ const displayPhone = phones => {
             `
             displayId.appendChild(div);
         }
+        toggleSpinner('none')
     }
 
 }
@@ -102,3 +108,4 @@ const displayPhoneDetails = phonesId => {
     }
 
 }
+

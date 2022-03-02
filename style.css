@@ -14,3 +14,7 @@ body{
 #no-result{
     display: none;
 }
+ /* spinner style */
+#spinner{
+    display: none;
+}

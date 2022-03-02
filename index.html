@@ -35,11 +35,18 @@
                     id="button-addon2">Search</button>
             </div>
 
-            <!-- phone details section -->
+            <!-- phone details start -->
 
             <div class="w-50 mx-auto" id="phone-details">
-                <p class="w-50 mx-auto text-danger" id="no-result">no phones found...</p>
-            </div>
+                <p class="w-50 mx-auto" id="no-result">no results found...</p>
+                <div class="w-50 mx-auto" id="spinner">
+                    <div class="text-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+
+                    </div>
+                    <!-- toogle spinner start -->
         </section>
 
 
@@ -47,7 +54,7 @@
         <!-- display phones section -->
 
         <section>
-            <div id="display-phones" class="row row-cols-1 row-cols-md-3 g-4">
+            <div id="display-phones" class="row row-cols-1 row-cols-md-3 g-3 m-2">
             </div>
 
         </section>
