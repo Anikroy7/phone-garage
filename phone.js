@@ -54,18 +54,38 @@ const loadShowDetails = (phoneId) => {
 }
 
 const displayPhoneDetails = PhonesId => {
-    const displayDetailsArea = document.getElementById('phone-details');
-    // console.log(PhonesId.releaseDate)
-    displayDetailsArea.innerHTML = `
 
-            <img src="${PhonesId.image}" alt="">
-            <h3>${PhonesId.name}</h3>
-            <p>${PhonesId.releaseDate}</p>
-            <p>Storage: ${PhonesId.mainFeatures.storage}</p>
-            <p>Memory: ${PhonesId.mainFeatures.memory}</p>
-            <p>Chipset: ${PhonesId.mainFeatures.chipSet}</p>
-            <p>Display-size: ${PhonesId.mainFeatures.displaySize}</p>
-            <p>Sensors: ${PhonesId.mainFeatures.sensors[0]},${PhonesId.mainFeatures.sensors[1]},${PhonesId.mainFeatures.sensors[2]},${PhonesId.mainFeatures.sensors[3]},${PhonesId.mainFeatures.sensors[4]},${PhonesId.mainFeatures.sensors[5]}</p>
+    const displayDetailsArea = document.getElementById('phone-details');
+
+    if (PhonesId.releaseDate === '') {
+        displayDetailsArea.innerHTML = `
+    
+                <img src="${PhonesId.image}" alt="">
+                <h3>${PhonesId.name}</h3>
+                <p>no release date found...</p>
+                <p>Storage: ${PhonesId.mainFeatures.storage}</p>
+                <p>Memory: ${PhonesId.mainFeatures.memory}</p>
+                <p>Chipset: ${PhonesId.mainFeatures.chipSet}</p>
+                <p>Display-size: ${PhonesId.mainFeatures.displaySize}</p>
+                <p>Sensors: ${PhonesId.mainFeatures.sensors[0]},${PhonesId.mainFeatures.sensors[1]},${PhonesId.mainFeatures.sensors[2]},${PhonesId.mainFeatures.sensors[3]},${PhonesId.mainFeatures.sensors[4]},${PhonesId.mainFeatures.sensors[5]}</p>
+    
             
-              `
+                
+                  `
+    }
+    else {
+        displayDetailsArea.innerHTML = `
+    
+                <img src="${PhonesId.image}" alt="">
+                <h3>${PhonesId.name}</h3>
+                <p>${PhonesId.releaseDate}</p>
+                <p>Storage: ${PhonesId.mainFeatures.storage}</p>
+                <p>Memory: ${PhonesId.mainFeatures.memory}</p>
+                <p>Chipset: ${PhonesId.mainFeatures.chipSet}</p>
+                <p>Display-size: ${PhonesId.mainFeatures.displaySize}</p>
+                <p>Sensors: ${PhonesId.mainFeatures.sensors[0]},${PhonesId.mainFeatures.sensors[1]},${PhonesId.mainFeatures.sensors[2]},${PhonesId.mainFeatures.sensors[3]},${PhonesId.mainFeatures.sensors[4]},${PhonesId.mainFeatures.sensors[5]}</p>
+                               
+                  `
+    }
+
 }
